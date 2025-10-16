@@ -1,28 +1,37 @@
-import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import express from "express";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import methodOverride from "method-override";
+import path from "path";
+import { fileURLToPath } from "url";
+
+import Player from "./models/player.js";
+import Game from "./models/game.js";
+
+const app = express();
 
 // Fix for __dirname in ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const app = express();
-
-// Set EJS as view engine
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+// Database connection
+mongoose.connect(process.env.MONGO_URI || "mongodb+srv://mmarichal:tufsaro2025@clusterdev.ynvq74n.mongodb.net/rosafut?retryWrites=true&w=majority&appName=Clusterdev", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 // Middleware
-app.use(express.json());
+app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
+app.set('views', path.join(__dirname, 'views'));
+// app.use("/public", express.static(path.join(__dirname, 'public')));
 
-// Routes
-app.get('/', (req, res) => {
-  res.render('home', { title: 'Home Page', message: 'Welcome to the Home Page!' });
-});
+// ROUTES
+app.get("/rosafut", (req, res) => res.render("rosafut"));
+app.get("/", (req, res) => res.render("home"));
 
-app.get('/about', (req, res) => {
-  res.render('about', { title: 'About Page', message: 'This is the About Page.' });
-});
+// ... all your other routes remain exactly the same ...
 
-// Export app for Vercel (no app.listen)
+// ✅ Instead of app.listen(), just export app for Vercel
 export default app;
