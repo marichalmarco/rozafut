@@ -1,0 +1,59 @@
+<% include ./header %>
+
+<div class="container">
+
+  <header class="jumbotron text-center">
+    <h1 class="display-4">Jugadores</h1>
+    <p class="lead">Crear, editar y remover jugadores del grupo.</p>
+    <div class="d-flex justify-content-center gap-3 mt-3">
+      <a href="/new" class="btn btn-success btn-lg">
+        <i class="fas fa-user-plus"></i> <b>Agregar Jugador</b>
+      </a>
+      <a href="/rosafut" class="btn btn-primary btn-lg">
+        <i class="fas fa-home"></i> <b>INICIO</b>
+      </a>
+    </div>
+  </header>
+
+  <div class="card shadow-lg rounded-3 p-4">
+    <table 
+      class="table table-hover table-striped align-middle text-center"
+      data-toggle="table"
+      data-search="true"
+      data-show-columns="false"
+      data-side-pagination="client"
+      data-pagination="true"
+      data-page-list="[10, 25, 50, 100, All]"
+    >
+      <thead class="table-dark">
+        <tr>
+          <th data-align="center">Player</th>
+          <th data-align="center">Edit</th>
+          <th data-align="center">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% players.forEach(function(player) { %>
+          <tr>
+            <td><%= player.name %></td>
+            <td>
+              <a class="btn btn-primary btn-sm w-100" href="/<%= player._id %>/edit">
+                <i class="fas fa-user-edit"></i> Edit
+              </a>
+            </td>
+            <td>
+              <form class="delete-form" action="/<%= player._id %>?_method=DELETE" method="POST">
+                <button class="btn btn-danger btn-sm w-100">
+                  <i class="fas fa-user-minus"></i> Delete
+                </button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<% include ./footer %>

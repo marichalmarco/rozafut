@@ -1,0 +1,22 @@
+<% include ./header %>
+
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center">Update Player's Name</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/<%=player._id%>/edit?_method=PUT" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="player[name]" value ="<%=player.name%>">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Update</button>
+                </div> 
+            </form>
+            <a class="btn btn-danger btn-block" href="/">Go Back</a>
+        </div>
+       
+    </div>
+</div>
+
+
+<% include ./footer %>

@@ -1,0 +1,89 @@
+<% include ./header %>
+<br><br><br><br><br><br>
+
+<div class="container mt-5">
+
+  <!-- Match Entry Section -->
+  <a href="/matchentry" class="card-link">
+    <div class="menu-card" style="background: linear-gradient(135deg, #FF9800, #E65100); color: white;">
+      <h1 class="display-5"><i class="fas fa-user-plus"></i> Ingresar Partido</h1>
+    </div>
+  </a>
+
+  <!-- Players Section -->
+  <a href="/maintenance" class="card-link">
+    <div class="menu-card" style="background: linear-gradient(135deg, #009688, #004D40); color: white;">
+      <h1 class="display-5"><i class="fas fa-tools"></i> Jugadores</h1>
+    </div>
+  </a>
+
+  <!-- Reset Players Stats (POST) -->
+  <form action="/players/resetAll" method="POST" class="card-form">
+    <button type="submit" class="menu-card" style="background: linear-gradient(135deg, #FFD700, #FFA000); color: black;">
+      <h1 class="display-5"><i class="fas fa-trophy"></i> Reiniciar estadísticas</h1>
+    </button>
+  </form>
+
+  <!-- Delete Games Section (POST) -->
+  <form action="/games/deleteAll" method="POST" class="card-form">
+    <button type="submit" class="menu-card" style="background: linear-gradient(135deg, #F44336, #B71C1C); color: white;">
+      <h1 class="display-5"><i class="fas fa-trash-alt"></i> Eliminar Partidos </h1>
+    </button>
+  </form>
+
+  <!-- Soccer Ball Only -->
+  <div class="text-center mb-5">
+    <a href="/games" class="soccer-ball-link">
+      <i class="fas fa-futbol"></i>
+    </a>
+  </div>
+
+</div>
+
+<style>
+  /* Common clickable card style */
+  .menu-card {
+    width: 100%;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .menu-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  }
+
+  /* Ensure links/buttons look the same */
+  .card-link {
+    text-decoration: none;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-form {
+    margin: 0 0 1.5rem 0;
+  }
+
+  .card-form button {
+    display: block;
+  }
+
+  /* Soccer ball icon */
+  .soccer-ball-link {
+    font-size: 100px;
+    color: black;
+    transition: transform 0.2s ease, text-shadow 0.2s ease;
+  }
+
+  .soccer-ball-link:hover {
+    transform: scale(1.1);
+    text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+</style>
+
+<% include ./footer %>

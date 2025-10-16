@@ -1,0 +1,47 @@
+<% include ./header %>
+
+
+<div class="container">
+
+<header class="jumbotron">
+    <h1 class="text-center">🌹⚽ Histórico de Partidos ⚽🌹</h1>
+</header>
+
+  <a href="/leaderboard"><i class="fas fa-trophy" style="font-size:36px; color:gold;"></i></a>
+  <br>
+  <br>
+
+    <table 
+           data-toggle="table" 
+           data-search = "false" 
+           data-show-columns="false"
+           data-striped="true"
+           data-sort-name="Player's Name"
+           data-side-pagination = 'client'
+           data-pagination="true"
+           data-page-list = "[10, 25, 50, 100, All]"
+          > 
+    <thead>
+        <tr >
+            <th data-align="center">Date</th>
+            <th data-align="center">Score A</th>
+            <th data-align="center">Score B</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% games.forEach(function(game) {%>
+        <tr >
+            <td><a href="/game/<%=game._id%>"><%=game.date.toDateString()%></a> </td>
+            <td><%=game.ascore%> </td>
+            <td><%=game.bscore%> </td>       
+        <% }); %>
+    </tbody>
+   </table>
+
+   <a href="/" class="btn btn-primary"><b>INICIO</b></a>
+</div>
+
+
+
+<% include ./footer %>
+

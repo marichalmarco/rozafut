@@ -1,0 +1,120 @@
+<% include ./header %>
+
+<style>
+  .match-card {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 40px auto;
+    text-align: center;
+  }
+
+  .score {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 15px 0;
+  }
+
+  .winner {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #007bff;
+  }
+
+  .team-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    flex: 1;
+    transition: 0.3s;
+  }
+
+  .team-card.winner {
+    border: 3px solid #28a745;
+    box-shadow: 0px 0px 15px rgba(40, 167, 69, 0.6);
+    transform: scale(1.03);
+  }
+
+  .team-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .player-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .player-list li {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .home-btn {
+    display: inline-block;
+    margin-top: 20px;
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+  }
+  .home-btn:hover {
+    background: #0056b3;
+  }
+
+  @media(max-width: 768px) {
+    .row {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<div class="container">
+  <div class="match-card">
+    <h2>Fecha del Juego:</h2>
+    <h4><%= game.date.toDateString() %></h4>
+
+    <div class="score">Marcador: <%= game.ascore %> - <%= game.bscore %></div>
+    <div class="winner">Ganador: <%= resultado %></div>
+
+    <div class="row">
+      <div class="team-card <%= game.ascore > game.bscore ? 'winner' : '' %>">
+        <div class="team-name">Equipo A</div>
+        <ul class="player-list">
+          <% ea.forEach(function(g) { %>
+            <li><%= g %></li>
+          <% }); %>
+        </ul>
+      </div>
+
+      <div class="team-card <%= game.bscore > game.ascore ? 'winner' : '' %>">
+        <div class="team-name">Equipo B</div>
+        <ul class="player-list">
+          <% eb.forEach(function(g) { %>
+            <li><%= g %></li>
+          <% }); %>
+        </ul>
+      </div>
+    </div>
+
+    <a href="/" class="home-btn">🏠 INICIO</a>
+  </div>
+</div>
+
+<% include ./footer %>

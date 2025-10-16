@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-  </head>
-  <body>
-    <h1><%= message %></h1>
-    <p><a href="/about">Go to About Page</a></p>
-  </body>
-</html>
+<% include ./header %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="container mt-5">
+
+  <!-- Leaderboard Section -->
+  <a href="/leaderboard" style="text-decoration: none;">
+    <div class="jumbotron text-center p-5 shadow-lg mb-4 clickable-card" 
+         style="background: linear-gradient(135deg, #4CAF50, #2E7D32); color: white; border-radius: 15px;">
+      <h1 class="display-4"><i class="fas fa-trophy"></i> Tabla de Posiciones</h1>
+    </div>
+  </a>
+
+  <!-- Games Section -->
+  <a href="/games" style="text-decoration: none;">
+    <div class="jumbotron text-center p-5 shadow-lg clickable-card" 
+         style="background: linear-gradient(135deg, #2196F3, #0D47A1); color: white; border-radius: 15px;">
+      <h1 class="display-4"><i class="fas fa-futbol"></i> Histórico de Partidos</h1>
+    </div>
+  </a>
+
+</div>
+
+<style>
+  .clickable-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+  .clickable-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  }
+</style>
+
+<% include ./footer %>

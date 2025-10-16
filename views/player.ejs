@@ -1,0 +1,87 @@
+<% include ./header %>
+
+<style>
+  .player-card {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 600px;
+    margin: auto;
+  }
+  .player-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+  }
+  .stats-row {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+  }
+  .stats-row div {
+    background: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+    min-width: 100px;
+  }
+  .rate {
+    font-size: 1.1em;
+    margin: 8px 0;
+  }
+  .home-btn {
+    display: inline-block;
+    margin-top: 20px;
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+  }
+  .home-btn:hover {
+    background: #0056b3;
+  }
+</style>
+
+<div class="container">
+  <div class="player-card">
+    <% let winRate = (player.wins/player.games) * 100; %>
+
+    <!-- Icon depending on performance -->
+    <div class="player-icon">
+      <% if (winRate >= 80) { %>
+        🏆
+      <% } else if (winRate >= 60) { %>
+        💪
+      <% } else if (winRate >= 40) { %>
+        😐
+      <% } else if (winRate >= 20) { %>
+        😵‍💫
+      <% } else { %>
+        💀
+      <% } %>
+    </div>
+
+    <h1><%= player.name %></h1>
+    <h2>Games: <%= player.games %></h2>
+
+    <div class="stats-row">
+      <div><b>Wins</b><br><%= player.wins %></div>
+      <div><b>Loses</b><br><%= player.loses %></div>
+      <div><b>Draws</b><br><%= player.draws %></div>
+    </div>
+
+    <hr>
+
+    <div class="rate">🏆 Win Rate: <%= winRate.toFixed(1) %>%</div>
+    <div class="rate">❌ Loss Rate: <%= ((player.loses/player.games)*100).toFixed(1) %>%</div>
+    <div class="rate">🤝 Draw Rate: <%= ((player.draws/player.games)*100).toFixed(1) %>%</div>
+
+    <a href="/leaderboard" class="home-btn">🏠 Retornar</a>
+  </div>
+</div>
+
+<% include ./footer %>

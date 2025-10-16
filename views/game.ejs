@@ -1,0 +1,97 @@
+<% include ./header %>
+
+<br>
+<br>
+<div class="container mt-5">
+
+  <div class="card shadow-lg border-0 rounded-3">
+    <br>
+    <br>
+    <div class="card-header text-center bg-dark text-white">
+      <h1 class="mb-0"><i class="fas fa-futbol"></i> Registrar Partido <i class="fas fa-futbol"></i></h1>
+    </div>
+
+    <div class="card-body p-4">
+
+      <form action="/submit" method="post">
+
+        <!-- Date Picker -->
+        <div class="mb-4">
+          <label for="matchDate" class="form-label fw-bold">
+            <i class="fas fa-calendar-alt"></i> Fecha del Partido
+          </label>
+          <input type="date" id="matchDate" name="date" class="form-control form-control-lg" required>
+        </div>
+
+        <!-- Players Selection Table -->
+        <div class="table-responsive mb-4">
+          <table class="table table-hover align-middle text-center">
+            <thead class="table-dark">
+              <tr>
+                <th>Jugador</th>
+                <th>Equipo A</th>
+                <th>Equipo B</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% players.forEach(function(player) { %>
+                <tr>
+                  <td class="fw-bold"><%= player.name %></td>
+                  <td>
+                    <input type="checkbox" name="Ateam" value="<%= player._id %>" class="form-check-input">
+                  </td>
+                  <td>
+                    <input type="checkbox" name="Bteam" value="<%= player._id %>" class="form-check-input">
+                  </td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Score Inputs -->
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <label for="Ascore" class="form-label fw-bold">⚽ Goles Equipo A</label>
+            <input type="number" id="Ascore" name="Ascore" class="form-control form-control-lg" placeholder="0" min="0" required>
+          </div>
+          <div class="col-md-6">
+            <label for="Bscore" class="form-label fw-bold">⚽ Goles Equipo B</label>
+            <input type="number" id="Bscore" name="Bscore" class="form-control form-control-lg" placeholder="0" min="0" required>
+          </div>
+        </div>
+
+        <!-- Submit + Back Buttons -->
+        <div class="d-flex justify-content-between">
+          <a href="/rosafut" class="btn btn-secondary btn-lg">
+            <i class="fas fa-home"></i> Inicio
+          </a>
+          <button type="submit" class="btn btn-success btn-lg">
+            <i class="fas fa-check-circle"></i> Guardar Partido
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .card {
+    background: #f9f9f9;
+  }
+  .table th {
+    font-size: 1.1rem;
+  }
+  .form-control-lg {
+    border-radius: 12px;
+  }
+  button.btn, a.btn {
+    border-radius: 12px;
+    min-width: 180px;
+  }
+</style>
+
+<% include ./footer %>
