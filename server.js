@@ -29,7 +29,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // ROUTES
 app.get("/rosafut", (req, res) => res.render("rosafut"));
-app.get("/", (req, res) => res.send("home"));
+app.get("/", (req, res) => res.render("home"));
 
 // ... all your other routes remain exactly the same ...
 
