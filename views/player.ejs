@@ -52,16 +52,16 @@
 
     <!-- Icon depending on performance -->
     <div class="player-icon">
-      <% if (winRate >= 80) { %>
-        🏆
-      <% } else if (winRate >= 60) { %>
-        💪
+      <% if (winRate >= 90) { %>
+        😁
+      <% } else if (winRate >= 65) { %>
+        😄
       <% } else if (winRate >= 40) { %>
         😐
       <% } else if (winRate >= 20) { %>
         😵‍💫
       <% } else { %>
-        💀
+        😭
       <% } %>
     </div>
 
@@ -76,9 +76,9 @@
 
     <hr>
 
-    <div class="rate">🏆 % Victorias: <%= winRate.toFixed(1) %>%</div>
-    <div class="rate">❌ % Perdidas: <%= ((player.loses/player.games)*100).toFixed(1) %>%</div>
-    <div class="rate">🤝 % Empates: <%= ((player.draws/player.games)*100).toFixed(1) %>%</div>
+    <div class="rate">🏆 Porcentaje de Victorias: <%= winRate.toFixed(1) %>%</div>
+    <div class="rate">❌ Porcentaje de Perdidas: <%= ((player.loses/player.games)*100).toFixed(1) %>%</div>
+    <div class="rate">🤝 Porcentaje de Empates: <%= ((player.draws/player.games)*100).toFixed(1) %>%</div>
 
     <a href="/leaderboard" class="home-btn">🏠 Retornar</a>
   </div>
