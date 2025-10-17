@@ -76,9 +76,9 @@
 
     <hr>
 
-    <div class="rate">🏆 Win Rate: <%= winRate.toFixed(1) %>%</div>
-    <div class="rate">❌ Loss Rate: <%= ((player.loses/player.games)*100).toFixed(1) %>%</div>
-    <div class="rate">🤝 Draw Rate: <%= ((player.draws/player.games)*100).toFixed(1) %>%</div>
+    <div class="rate">🏆 % Victorias: <%= winRate.toFixed(1) %>%</div>
+    <div class="rate">❌ % Perdidas: <%= ((player.loses/player.games)*100).toFixed(1) %>%</div>
+    <div class="rate">🤝 % Empates: <%= ((player.draws/player.games)*100).toFixed(1) %>%</div>
 
     <a href="/leaderboard" class="home-btn">🏠 Retornar</a>
   </div>
